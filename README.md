@@ -1,3 +1,2 @@
 # CP2-2020-USTC  
-this is a set of solutions to the questions of the online judge of USTC in the Computer Programming II this semester.  
-this is also my try to use 'git'.
+This is the set of solutions to the questions of the online judge of USTC, the homework solutions and the practices of the question mentioned in the class in the Computer Programming II this semester.  
