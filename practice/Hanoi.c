@@ -6,7 +6,7 @@ void Hanoi(int n,char a,char b,char c){
     }
     Hanoi(n-1,a,c,b);
     printf("%c -> %c\n",a,b);
-    Hanoi(n-1,c,b,a)
+    Hanoi(n-1,c,b,a);
 }
 int main(){
     int n;
