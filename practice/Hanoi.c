@@ -10,7 +10,7 @@ void Hanoi(int n,char a,char b,char c){
 }
 int main(){
     int n;
-    scanf("%d",&n);
+    scanf("%d",&n);;
     Hanoi(n,'A','B','C');
     return 0;
 }
