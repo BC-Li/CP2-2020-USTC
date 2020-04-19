@@ -51,7 +51,7 @@ int main()
   double dArr[4];
   while (scanf("%lf %lf %lf %lf", &dArr[0], &dArr[1], &dArr[2], &dArr[3]) != EOF)
   {              // input using EOF
-    iTarget = 0; //set the target to 0;
+    iTarget = 0; //set the target to 0
     if (dArr[0] != 0 && dArr[1] != 0 && dArr[2] != 0 && dArr[3] != 0)
     {
       dfs(dArr, 4);
