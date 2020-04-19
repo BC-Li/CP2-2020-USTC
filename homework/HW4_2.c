@@ -1,53 +1,71 @@
 #include <math.h>
 #include <stdio.h>
 
-int target = 0;
-void dfs(double arr[], int n) {
-  if (n == 1) {
-    if (fabs(arr[0] - 24) < 1e-4) {
-      target = 1;
+int iTarget = 0;
+void dfs(double dArr[], int n)
+{ // dfs search
+  if (n == 1)
+  { //stop when there is only 1 number left. see if it is 24 and return
+    if (fabs(dArr[0] - 24) < 1e-4)
+    {
+      iTarget = 1; //if it is 24 there is a way to operate the numbers to 24. set the target to 1.
     }
-    return;
+    return; //if it is not 24 this is not a way to operate them to 24. move on to the next way.
   }
-  double arr_2[4];
-  for (int i = 0; i < n; i++) {
-    for (int j = 0; j < n; j++) {
-      if (i == j) {
+  //below are the operations.
+  double dArr_2[4];
+  for (int i = 0; i < n; i++)
+  {
+    for (int iJ = 0; iJ < n; iJ++)
+    { // 2 dimension loop to pick out 2 of the numbers randomly.
+      if (i == iJ)
+      {
+        continue;
+      } // not picking the same number
+      int iM = 0;
+      for (int iK = 0; iK < n; iK++)
+      {
+        if (iK != i && iK != iJ)
+        {
+          dArr_2[iM] = dArr[iK];
+          iM++;
+        } //copy the 2 numbers
+      }
+      dArr_2[iM] = dArr[i] + dArr[iJ];
+      dfs(dArr_2, iM + 1); //dfs search the numbers left(iM) plus 1 which is plused , multiplied or divised (1).
+      dArr_2[iM] = dArr[i] - dArr[iJ];
+      dfs(dArr_2, iM + 1);
+      dArr_2[iM] = dArr[i] * dArr[iJ];
+      dfs(dArr_2, iM + 1);
+      if (fabs(dArr[iJ]) < 1e-4)
+      { //fabs command in this program is used to judge whether it is zero.
         continue;
       }
-      int m = 0;
-      for (int k = 0; k < n; k++) {
-        if (k != i && k != j) {
-          arr_2[m] = arr[k];
-          m++;
-        }
+      dArr_2[iM] = dArr[i] / dArr[iJ];
+      dfs(dArr_2, iM + 1);
     }
-        arr_2[m] = arr[i] + arr[j];
-        dfs(arr_2, m + 1);
-        arr_2[m] = arr[i] - arr[j];
-        dfs(arr_2, m + 1);
-        arr_2[m] = arr[i] * arr[j];
-        dfs(arr_2, m + 1);
-        if (fabs(arr[j]) < 1e-4) {
-          continue;
-        }
-        arr_2[m] = arr[i] / arr[j];
-        dfs(arr_2, m + 1);
-      }
   }
 }
-int main() {
-  double arr[4];
-  while (scanf("%lf %lf %lf %lf", &arr[0], &arr[1], &arr[2], &arr[3]) != EOF) {
-    target = 0;
-    if (arr[0] != 0 && arr[1] != 0 && arr[2] != 0 && arr[3] != 0) {
-      dfs(arr, 4);
-    } else {
+int main()
+{
+  double dArr[4];
+  while (scanf("%lf %lf %lf %lf", &dArr[0], &dArr[1], &dArr[2], &dArr[3]) != EOF)
+  {              // input using EOF
+    iTarget = 0; //set the target to 0;
+    if (dArr[0] != 0 && dArr[1] != 0 && dArr[2] != 0 && dArr[3] != 0)
+    {
+      dfs(dArr, 4);
+    }
+    else
+    {
       break;
     }
-    if (target == 1) {
+    if (iTarget == 1)
+    {
       printf("YES\n");
-    } else {
+    }
+    else
+    {
       printf("NO\n");
     }
   }
