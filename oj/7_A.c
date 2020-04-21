@@ -3,18 +3,19 @@
 
 int main()
 {
-    char arr_1[100];
-    char arr_2[100];
-    unsigned arr_answer[200];
-    memset(arr_1, 0, sizeof(arr_1));
-    memset(arr_2, 0, sizeof(arr_2));
+    char arr_1[110];
+    char arr_2[110];
+    int arr_answer[210];
+    int n_1[110];
+    int n_2[110];
+    memset(n_1, 0, sizeof(n_1));
+    memset(n_2, 0, sizeof(n_2));
     memset(arr_answer, 0, sizeof(arr_answer));
     scanf("%s", arr_1);
     scanf("%s", arr_2);
-    int length_1 = sizeof(arr_1);
-    int length_2 = sizeof(arr_2);
-    unsigned n_1[110];
-    unsigned n_2[110];
+    int length_1 = strlen(arr_1);
+    int length_2 = strlen(arr_2);
+
     int j = 0;
     for (int i = length_1 - 1; i >= 0; i--)
     {
@@ -31,7 +32,7 @@ int main()
     {
         for (int j = 0; j < length_1; j++)
         {
-            arr_answer[i + j] = n_1[j] * n_2[i];
+            arr_answer[i + j] += n_1[j] * n_2[i];
         }
     }
     int highest = 0;
