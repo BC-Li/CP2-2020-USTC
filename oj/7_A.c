@@ -1,94 +1,55 @@
 #include <stdio.h>
-#include <math.h>
-struct team{
-    int rank;
-    int score;
-    char positiveornot;
-    int win;
-    int lose;
-    char winornot;
-    int jifen;
-};
-void stress(struct team* a,struct team* b){
-    int x;
-    int y;
-    scanf("%d:%d", &x, &y);
-    a->win = a->win + x;
-    b->win = b->win + y;
-    a->lose = a->lose + y;
-    b->lose = b->lose + x;
-    a->score = a->win - a->lose;
-        if(a->score>=0){
-            a->positiveornot = '+';
-        }
-        else
-            a->positiveornot = '-';
-    b->score = b->win - b->lose;
-        if(b->score>=0){
-            b->positiveornot = '+';
-        }
-        else
-            b->positiveornot = '-';
-    if(x>y){
-        a->jifen = a->jifen + 3;
-    }
-    if(x==y){
-        a->jifen = a->jifen + 1;
-        b->jifen = b->jifen + 1;
-    }
-    if(x<y){
-        b->jifen = b->jifen + 3;
-    }
-}
-int main(){
-    struct team TEAM[4];
-    for (int i = 0; i < 4;i++){
-        TEAM[i].win = 0;
-        TEAM[i].lose = 0;
-        TEAM[i].rank = i;
-        TEAM[i].score = 0;
-        TEAM[i].jifen = 0;
-    }
-    stress(&TEAM[0], &TEAM[1]);
-    stress(&TEAM[2], &TEAM[3]);
-    stress(&TEAM[0], &TEAM[2]);
-    stress(&TEAM[3], &TEAM[1]);
-    stress(&TEAM[1], &TEAM[2]);
-    stress(&TEAM[3], &TEAM[0]);
-    int switcher;
-    for (int i = 0; i < 4;i++){
-        for (int j = 0; j < 4;j++){
-            if(TEAM[i].jifen<TEAM[j].jifen && TEAM[i].rank < TEAM[j].rank){
-                switcher = TEAM[i].rank;
-                TEAM[i].rank = TEAM[j].rank;
-                TEAM[j].rank = switcher;
-                
-            }
-            if(TEAM[i].jifen==TEAM[j].jifen){
-                if(TEAM[i].score<TEAM[j].score && TEAM[i].rank < TEAM[j].rank){
-                switcher = TEAM[i].rank;
-                TEAM[i].rank = TEAM[j].rank;
-                TEAM[j].rank = switcher;
-                }
-                 if(TEAM[i].score==TEAM[j].score){
-                     if(TEAM[i].win<TEAM[j].win && TEAM[i].rank < TEAM[j].rank){
-                switcher = TEAM[i].rank;
-                TEAM[i].rank = TEAM[j].rank;
-                TEAM[j].rank = switcher;
-                }}
-                            }
-        }
-    }
-    for (int i = 0; i < 4;i++){
-        if(TEAM[i].rank <=1){
-            TEAM[i].winornot = 'Y';
-        }
-        else
-            TEAM[i].winornot = 'N';
-    }
-    for (int i = 0; i < 4;i++){
-        printf("%d %d %c%d %d %d %c\n", TEAM[i].rank + 1, TEAM[i].jifen, TEAM[i].positiveornot,abs(TEAM[i].score), TEAM[i].win, TEAM[i].lose, TEAM[i].winornot);
+#include <string.h>
 
+int main()
+{
+    char arr_1[100];
+    char arr_2[100];
+    unsigned arr_answer[200];
+    memset(arr_1, 0, sizeof(arr_1));
+    memset(arr_2, 0, sizeof(arr_2));
+    memset(arr_answer, 0, sizeof(arr_answer));
+    scanf("%s", arr_1);
+    scanf("%s", arr_2);
+    int length_1 = sizeof(arr_1);
+    int length_2 = sizeof(arr_2);
+    unsigned n_1[110];
+    unsigned n_2[110];
+    int j = 0;
+    for (int i = length_1 - 1; i >= 0; i--)
+    {
+        n_1[j] = arr_1[i] - '0';
+        j++;
+    }
+    j = 0;
+    for (int i = length_2 - 1; i >= 0; i--)
+    {
+        n_2[j] = arr_2[i] - '0';
+        j++;
+    }
+    for (int i = 0; i < length_2; i++)
+    {
+        for (int j = 0; j < length_1; j++)
+        {
+            arr_answer[i + j] = n_1[j] * n_2[i];
+        }
+    }
+    int highest = 0;
+    for (int i = 0; i < 200; i++)
+    {
+        if (arr_answer[i] >= 10)
+        {
+            arr_answer[i + 1] = arr_answer[i + 1] + arr_answer[i] / 10;
+            arr_answer[i] = arr_answer[i] % 10;
+        }
+        if (arr_answer[i])
+        {
+            highest = i;
+        }
+    }
+    for (int i = highest; i >= 0; i--)
+    {
+        printf("%d", arr_answer[i]);
     }
     return 0;
 }
