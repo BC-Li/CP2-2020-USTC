@@ -92,7 +92,7 @@ int main()
         for (j = 0; j <= len; j++)
         {
             z[len - j] = 0;
-            while (((temp = judge(x, y, len1, len2) >= 0)) && digit >= k)
+            while ((((temp = judge(x, y, len1, len2) )>= 0)) && digit >= k)
             {
                 sub(x, y, len1, len2);
                 z[len - j]++;
