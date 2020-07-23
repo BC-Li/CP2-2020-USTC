@@ -26,7 +26,8 @@
     "editor.smoothScrolling": true, // 滚动平滑，不过效果很微弱
     "window.zoomLevel": 0.2,
     "files.associations": {
-        "HW2.C": "cpp"
+        "HW2.C": "cpp",
+        "TEST.C": "cpp"
     },
     "python.pythonPath": "C:\\Users\\Amethyst\\AppData\\Local\\Programs\\Python\\Python38\\python.exe", // 整体放大
     "python.linting.pylintArgs": ["--generate-members"]

@@ -1,5 +1,5 @@
 # CP2-2020-USTC  
-This is the set of solutions to the questions of 
+This is a set of solutions to the questions of 
 
 * the write-ups of online judge of USTC 
 * the homework solutions 
