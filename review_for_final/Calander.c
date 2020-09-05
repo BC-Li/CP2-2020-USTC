@@ -33,7 +33,7 @@ int main(){
         years_current,month+1,input_day+1,weekdays[days_of_week]);
         month = 0;
         years_current = 2000;  
-        scanf("%d,&input_day")  
+        scanf("%d",&input_day);  
     }
     return 0;
 
