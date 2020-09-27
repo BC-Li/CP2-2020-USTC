@@ -3,7 +3,7 @@
 int main(){
     int iN;
     int iMax = 1;
-    int iArray[100000];               //用高精度数处理2的N次方
+    int iArray[100000];               //用高精度数处理2的N次方 Git Test
     memset(iArray, 0, sizeof(iArray));//把数组全设为0
     iArray[0] = 1;
     scanf("%d", &iN);

@@ -1,6 +1,8 @@
 #include<stdio.h>
 int main(){
-    freopen("1.in", "w", stdout);
-    printf("1111111");
+    char n [100];
+    gets(n);
+    char m = getchar();
+    printf("%c",m);
     return 0;
 }
